@@ -158,7 +158,7 @@ export default function Example() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       {/* Mobile menu */}
       <Dialog className="relative z-40 lg:hidden" open={open} onClose={setOpen}>
         <DialogBackdrop
@@ -174,7 +174,7 @@ export default function Example() {
             <div className="flex px-4 pb-2 pt-5">
               <button
                 type="button"
-                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 "
                 onClick={() => setOpen(false)}
               >
                 <span className="absolute -inset-0.5" />
@@ -350,8 +350,8 @@ export default function Example() {
               </div>
 
               {/* Flyout menus */}
-              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div className="flex h-full space-x-8">
+              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
+                <div className="flex h-full space-x-8 ">
                   {Navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open }) => (
