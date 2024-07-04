@@ -1,9 +1,15 @@
-import Carousel1 from "../../../images/carousel/3.jpeg";
-import Carousel2 from "../../../images/carousel/5.jpeg";
-import Carousel3 from "../../../images/carousel/1.jpeg";
-import Carousel4 from "../../../images/carousel/4.jpeg";
-import Carousel5 from "../../../images/carousel/2.jpeg";
+import mainbar from "../../../images/carousel/mainbanner.gif";
+import Carousel1 from "../../../images/carousel/Vanheusen.jpg";
+import Carousel2 from "../../../images/carousel/cantabil.jpg";
+import Carousel3 from "../../../images/carousel/Netplay.jpg";
+import Carousel4 from "../../../images/carousel/Kotty.jpg";
+import Carousel5 from "../../../images/carousel/Kibo-Ketch.jpg";
+import Carousel6 from "../../../images/carousel/JewelsGalaxy.jpg";
 export const HomeCarouselData = [
+  {
+    image: mainbar,
+    path: "/",
+  },
   {
     image: Carousel1,
     path: "/",
@@ -22,6 +28,10 @@ export const HomeCarouselData = [
   },
   {
     image: Carousel5,
+    path: "/",
+  },
+  {
+    image: Carousel6,
     path: "/",
   },
 ];

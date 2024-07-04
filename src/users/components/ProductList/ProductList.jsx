@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import ProductCard from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import data from "../../../data/Men/men_shirt.json";
+
 import "./style.css";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -27,7 +27,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ProductList = () => {
+const ProductList = ({ data }) => {
   const responsive = {
     0: { items: 1 },
     720: { items: 3 },
@@ -48,7 +48,7 @@ const ProductList = () => {
       <div className="slider-container mx-auto px-16">
         <Slider {...settings}>
           {data.map((items) => (
-            <ProductCard data={items} />
+            <ProductCard product={items} />
           ))}
         </Slider>
       </div>
