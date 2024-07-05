@@ -27,13 +27,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ProductList = ({ data }) => {
-  const responsive = {
-    0: { items: 1 },
-    720: { items: 3 },
-    1024: { items: 4 },
-  };
-
+const ProductList = ({ data, sectionName }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -45,7 +39,13 @@ const ProductList = ({ data }) => {
   };
   return (
     <>
-      <div className="slider-container mx-auto px-16">
+      <div className="slider-container mx-auto  px-4">
+        <div className="mt-16 mb-4">
+          <h2 className="text-4xl text-center font-bold  tracking-tight text-gray-900 capitalize">
+            {sectionName}
+          </h2>
+        </div>
+
         <Slider {...settings}>
           {data.map((items) => (
             <ProductCard product={items} />

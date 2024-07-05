@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.grayTxtbold {
+  color: #535766 !important;
+  margin-bottom: -10px;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.grayPara {
+  line-height: 18px;
+  color: #94969f;
+  font-size: 14px;
+  margin: 15px 0;
+}
