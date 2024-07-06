@@ -1,6 +1,6 @@
 import React from "react";
 import MainCarousel from "../../users/components/HomeCarousel/MainCarousel";
-import ProductList from "../../users/components/ProductList/ProductList";
+import HomeProductList from "../../users/components/HomeProductList/HomeProductList";
 import men_shirt from "../../data/Men/men_shirt.json";
 import men_jeans from "../../data/Men/men_jeans.json";
 import { dressPage1 } from "../../data/dress/page1";
@@ -14,10 +14,16 @@ const Homepage = () => {
       <MainCarousel />
       <PaymentCarousel />
       <div className="px-16  ">
-        <ProductList data={dressPage1} sectionName={"Must. Have. Today"} />
-        <ProductList data={men_shirt} sectionName={"Top pick for men"} />
-        <ProductList data={mens_kurta} sectionName={"Hot style, on repeat"} />
-        <ProductList data={kurtaPage1} sectionName={"Hot style, on repeat"} />
+        <HomeProductList data={dressPage1} sectionName={"Must. Have. Today"} />
+        <HomeProductList data={men_shirt} sectionName={"Top pick for men"} />
+        <HomeProductList
+          data={mens_kurta}
+          sectionName={"Hot style, on repeat"}
+        />
+        <HomeProductList
+          data={kurtaPage1}
+          sectionName={"Hot style, on repeat"}
+        />
         <TermConditon />
       </div>
     </div>
