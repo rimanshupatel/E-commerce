@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import ProductCard from "./ProductCard";
+import HomeProductCard from "./HomeProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -48,7 +48,7 @@ const ProductList = ({ data, sectionName }) => {
 
         <Slider {...settings}>
           {data.map((items) => (
-            <ProductCard product={items} />
+            <HomeProductCard product={items} />
           ))}
         </Slider>
       </div>
