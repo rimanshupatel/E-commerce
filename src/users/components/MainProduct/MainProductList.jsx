@@ -170,10 +170,10 @@ export default function MainProductList() {
           </div>
         </Dialog>
 
-        <main className="mx-auto  px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 py-6 ">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+        <main className="mx-auto  max-w-7xl px-0 sm:px-6 lg:px-8">
+          <div className="flex items-baseline justify-between border-b border-gray-200 py-6 px-3 ">
+            <h1 className="text-2xl lg:text-4xl font-bold tracking-tight text-gray-900">
+              rimanshu
             </h1>
 
             <div className="flex items-center">
@@ -232,13 +232,13 @@ export default function MainProductList() {
 
           <section
             aria-labelledby="products-heading"
-            className="flex pb-24 pt-6"
+            className="grid grid-cols-1 lg:grid-cols-4 pb-24 pt-6"
           >
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
 
-            <div className="w-0  sm:w-0 lg:w-52">
+            <div className="w-0 sm:w-0 lg:w-52 col-span-1">
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
@@ -322,8 +322,8 @@ export default function MainProductList() {
               </form>
             </div>
             {/* Product grid */}
-            <ul className=" w-full">
-              <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            <ul className="lg:col-span-3 w-full">
+              <div className="grid grid-cols-2 lg:grid-cols-3">
                 {dressPage1.map((items) => (
                   <MainProductCard data={items} />
                 ))}
