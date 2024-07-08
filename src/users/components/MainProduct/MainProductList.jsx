@@ -21,20 +21,22 @@ import {
 } from "@heroicons/react/20/solid";
 import { dressPage1 } from "../../../data/dress/page1";
 import MainProductCard from "./MainProductCard";
-
+import { filter, singleFilters } from "../../../data/filter";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
   { name: "Newest", href: "#", current: false },
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
-];
-const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
 ];
 const filters = [
   {
@@ -115,15 +117,6 @@ export default function MainProductList() {
               {/* Filters */}
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
-                        {category.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
 
                 {filters.map((section) => (
                   <Disclosure
@@ -178,7 +171,7 @@ export default function MainProductList() {
         </Dialog>
 
         <main className="mx-auto  px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+          <div className="flex items-baseline justify-between border-b border-gray-200 py-6 ">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               New Arrivals
             </h1>
@@ -237,84 +230,105 @@ export default function MainProductList() {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section
+            aria-labelledby="products-heading"
+            className="flex pb-24 pt-6"
+          >
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+            <div className="w-0  sm:w-0 lg:w-52">
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
-
-                {filters.map((section) => (
-                  <Disclosure
-                    key={section.id}
-                    as="div"
-                    className="border-b border-gray-200 py-6"
-                  >
+                {filter.map((section) => (
+                  <div key={section.id} as="div">
                     <h3 className="-my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                        <span className="font-medium text-gray-900">
-                          {section.name}
+                      <div className="py-2 flex w-full items-center justify-between bg-white  border-b border-gray-200 uppercase ">
+                        <span>
+                          <label className="text-sm font-medium tracking-wide">
+                            {section.name}
+                          </label>
                         </span>
-                        <span className="ml-6 flex items-center">
-                          <PlusIcon
-                            aria-hidden="true"
-                            className="h-5 w-5 group-data-[open]:hidden"
-                          />
-                          <MinusIcon
-                            aria-hidden="true"
-                            className="h-5 w-5 [.group:not([data-open])_&]:hidden"
-                          />
-                        </span>
-                      </DisclosureButton>
-                    </h3>
-                    <DisclosurePanel className="pt-6">
-                      <div className="space-y-4">
-                        {section.options.map((option, optionIdx) => (
-                          <div key={option.value} className="flex items-center">
-                            <input
-                              defaultValue={option.value}
-                              defaultChecked={option.checked}
-                              id={`filter-${section.id}-${optionIdx}`}
-                              name={`${section.id}[]`}
-                              type="checkbox"
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                            />
-                            <label
-                              htmlFor={`filter-${section.id}-${optionIdx}`}
-                              className="ml-3 text-sm text-gray-600"
-                            >
-                              {option.label}
-                            </label>
-                          </div>
-                        ))}
                       </div>
-                    </DisclosurePanel>
-                  </Disclosure>
+                    </h3>
+                    <div className="py-6">
+                      <div className="">
+                        <FormControl>
+                          <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            defaultValue="female"
+                            name="radio-buttons-group"
+                          >
+                            {section.options.map((option, optionIdx) => (
+                              <FormControlLabel
+                                value={option.value}
+                                control={
+                                  <Checkbox
+                                    sx={{
+                                      color: "black",
+                                      "&.Mui-checked": {
+                                        color: "black",
+                                      },
+                                    }}
+                                  />
+                                }
+                                label={option.label}
+                              />
+                            ))}
+                          </RadioGroup>
+                        </FormControl>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {singleFilters.map((section) => (
+                  <div key={section.id} as="div">
+                    <h3 className="-my-3 flow-root">
+                      <div className="py-2 flex w-full items-center justify-between bg-white  border-b border-gray-200 uppercase ">
+                        <span>
+                          <label className="text-sm font-medium tracking-wide">
+                            {section.name}
+                          </label>
+                        </span>
+                      </div>
+                    </h3>
+                    <div className="py-6">
+                      <div className="">
+                        <FormControl>
+                          {section.options.map((option, optionIdx) => (
+                            <FormControlLabel
+                              value={option.value}
+                              control={
+                                <Checkbox
+                                  sx={{
+                                    color: "black",
+                                    "&.Mui-checked": {
+                                      color: "black",
+                                    },
+                                  }}
+                                />
+                              }
+                              label={option.label}
+                            />
+                          ))}
+                        </FormControl>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </form>
-
-              {/* Product grid */}
-              <ul className="lg:col-span-3 w-full">
-                <div className="flex flex-wrap">
-                  {dressPage1.map((items) => (
-                    <MainProductCard data={items} />
-                  ))}
-                </div>
-              </ul>
             </div>
+            {/* Product grid */}
+            <ul className=" w-full">
+              <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {dressPage1.map((items) => (
+                  <MainProductCard data={items} />
+                ))}
+              </div>
+            </ul>
           </section>
         </main>
       </div>
