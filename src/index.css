@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
 .grayTxtbold {
   color: #535766 !important;
   margin-bottom: -10px;
