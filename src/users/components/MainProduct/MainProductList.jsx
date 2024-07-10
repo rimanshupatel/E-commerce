@@ -38,43 +38,6 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-const filters = [
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
-    ],
-  },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -82,7 +45,14 @@ function classNames(...classes) {
 
 export default function MainProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
+  const handleFilter = (value, sectionId) => {
+    let searchParams = new URLSearchParams(location.search);
+    let filterValue = searchParams.getAll(sectionId);
+    if (filterValue.length === 0) {
+      filterValue.push(value);
+    }
+    console.log(filterValue);
+  };
   return (
     <div className="bg-white">
       <div>
@@ -105,7 +75,7 @@ export default function MainProductList() {
               <div className="flex items-center justify-between px-4">
                 <h2 className="text-lg font-medium text-gray-900">Filters</h2>
                 <button
-                  type="button"
+                  type="button "
                   onClick={() => setMobileFiltersOpen(false)}
                   className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
                 >
@@ -118,7 +88,7 @@ export default function MainProductList() {
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
 
-                {filters.map((section) => (
+                {filter.map((section) => (
                   <Disclosure
                     key={section.id}
                     as="div"
@@ -256,28 +226,25 @@ export default function MainProductList() {
                     <div className="py-6">
                       <div className="">
                         <FormControl>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                          >
-                            {section.options.map((option, optionIdx) => (
-                              <FormControlLabel
-                                value={option.value}
-                                control={
-                                  <Checkbox
-                                    sx={{
+                          {section.options.map((option, optionIdx) => (
+                            <FormControlLabel
+                              value={option.value}
+                              control={
+                                <Checkbox
+                                  sx={{
+                                    color: "black",
+                                    "&.Mui-checked": {
                                       color: "black",
-                                      "&.Mui-checked": {
-                                        color: "black",
-                                      },
-                                    }}
-                                  />
-                                }
-                                label={option.label}
-                              />
-                            ))}
-                          </RadioGroup>
+                                    },
+                                  }}
+                                />
+                              }
+                              label={option.label}
+                              onChange={() =>
+                                handleFilter(option.value, section.id)
+                              }
+                            />
+                          ))}
                         </FormControl>
                       </div>
                     </div>
